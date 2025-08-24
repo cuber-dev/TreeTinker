@@ -284,6 +284,7 @@ textarea#jsonInput {
   font-family: "Fira Code", monospace;
   font-size: 0.9rem;
   white-space: pre; /* preserve formatting */
+ word-wrap: break-word;
   overflow-x: auto; /* horizontal scroll */
   overflow-y: auto;
   border: 1px solid var(--border-color);

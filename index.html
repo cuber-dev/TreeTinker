@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <!-- Charset & Viewport -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  <title>TreeTinker – Web JSON Editor</title>
+  <meta name="description" content="TreeTinker is a fast, browser-based JSON editor with tree and text views, instant preview, and one-click download." />
+  <meta name="keywords" content="JSON editor, JSON viewer, tree view, web tool, formatter, validator" />  <!-- Canonical & Robots -->  <link rel="canonical" href="https://example.com/" />
+  <meta name="robots" content="index, follow" />  <!-- Theming & Color Scheme -->  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1320" media="(prefers-color-scheme: dark)" />  <!-- Open Graph -->  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TreeTinker – Web JSON Editor" />
+  <meta property="og:description" content="Edit, view, and download JSON right in your browser." />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://example.com/og-image.png" />  <!-- Twitter Cards -->  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TreeTinker – Web JSON Editor" />
+  <meta name="twitter:description" content="Edit, view, and download JSON right in your browser." />
+  <meta name="twitter:image" content="https://example.com/og-image.png" />  <!-- PWA / Icons (optional but handy) -->  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/favicon.ico" sizes="any" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />  <!-- Preconnects for performance -->  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  <!-- Google Fonts (Sans) -->  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />  <!-- Font Awesome -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!-- Site Styles -->  <link rel="stylesheet" href="style.css" />  <!-- Misc: Favicons for legacy browsers -->  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+<!-- Site Styles -->
+<link rel="stylesheet" href="style.css" />
+
+<!-- App Script -->
+<script defer src="script.js"></script>
+</head>
+<body>
+  <noscript>TreeTinker requires JavaScript enabled to work properly.</noscript>  <header class="tt-header" role="banner" aria-label="Site header">
+    <div class="container">
+      <h1 class="logo" title="TreeTinker">
+        <i class="fa-solid fa-tree" aria-hidden="true"></i>
+        <span>TreeTinker</span>
+      </h1>
+      <nav aria-label="Primary navigation">
+        <ul class="nav">
+          <li><a href="#editor">Editor</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>  <main id="editor" class="tt-main" role="main">
+    <section class="hero container" aria-label="Intro">
+      <h2>Edit, view, and download JSON on the web</h2>
+      <p>Paste JSON below or load a file to get started.</p>
+      <div class="actions">
+        <button id="loadFileBtn" class="btn"><i class="fa-solid fa-file-arrow-up"></i> Load JSON</button>
+        <button id="downloadBtn" class="btn"><i class="fa-solid fa-file-arrow-down"></i> Download</button>
+        <button id="formatBtn" class="btn"><i class="fa-solid fa-wand-magic-sparkles"></i> Format</button>
+        <button id="minifyBtn" class="btn"><i class="fa-solid fa-compress"></i> Minify</button>
+        <button id="validateBtn" class="btn"><i class="fa-solid fa-check"></i> Validate</button>
+      </div>
+    </section><section class="editor container" aria-label="JSON editor">
+  <div class="editor-grid">
+    <div class="panel" aria-label="Text view">
+      <h3><i class="fa-solid fa-code"></i> Text View</h3>
+      <textarea id="jsonInput" spellcheck="false" placeholder='{"hello":"world"}'></textarea>
+    </div>
+    <div class="panel" aria-label="Tree view">
+      <h3><i class="fa-solid fa-diagram-project"></i> Tree View</h3>
+      <div id="treeView" class="tree-view" role="tree" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+  </main>  <section id="about" class="container" aria-label="About TreeTinker">
+    <h3>About</h3>
+    <p><strong>TreeTinker</strong> is a lightweight JSON editor with both Tree and Text views, instant formatting, validation, and one-click download. Everything runs 100% in your browser.</p>
+  </section>  <footer id="footer" class="tt-footer" role="contentinfo">
+    <div class="container">
+      <p>© <span id="year"></span> TreeTinker. Built for the web.</p>
+      <div class="social">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </footer>  <!-- App Script -->  <script defer src="script.js"></script>  <script>
+    // Small inline helper: set the current year
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    });
+  </script>  <!--
+    Notes:
+    - Replace example.com and og-image.png with your actual domain/assets.
+    - Add proper icons in /icons for best PWA support.
+    - style.css should define .container, .btn, .editor-grid, .panel, .tree-view, etc.
+  --></body>
+</html>

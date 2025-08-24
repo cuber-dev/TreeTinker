@@ -147,7 +147,7 @@ a:hover {
 
 textarea#jsonInput {
   width: 100%;
-  height: 400px;
+  height: 100%;
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 0.8rem;
@@ -254,12 +254,10 @@ textarea#jsonInput {
     grid-template-columns: 1fr;
   }
   
-  textarea#jsonInput,
-  .tree-view {
-    height: 250px;
-  }
   .panel{
     max-width : 360px;
+    
+    height: 700px;
   }
 }
 
@@ -276,10 +274,9 @@ textarea#jsonInput {
   font-size: 0.9rem;
   white-space: pre; /* preserve formatting */
   overflow-x: auto; /* horizontal scroll */
-  max-height: 500px; /* optional: limit height */
   overflow-y: auto;
   border: 1px solid var(--border-color);
-  height: 400px;
+  height: 100%;
   border-radius: 6px;
   width: 100%;
 }

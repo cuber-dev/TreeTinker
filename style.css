@@ -60,7 +60,12 @@ a:hover {
   gap: 1rem;
   list-style: none;
 }
-
+.nav-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+}
 .nav a {
   font-weight: 600;
   padding: 0.5rem 0.8rem;
@@ -260,6 +265,11 @@ textarea#jsonInput {
     height: 700px;
     max-height: 700px;
   }
+  .nav-container{
+   flex-direction: column;
+   gap: 1.3rem;
+   padding: 0;
+}
 }
 
 

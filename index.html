@@ -23,9 +23,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  <!-- Google Fonts (Sans) -->  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />  <!-- Font Awesome -->  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />  <!-- Site Styles -->  <link rel="stylesheet" href="style.css" />  <!-- Misc: Favicons for legacy browsers -->  <meta http-equiv="x-ua-compatible" content="ie=edge" />
 <!-- Site Styles -->
 <link rel="stylesheet" href="style.css" />
+<!-- Highlight.js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+<!-- Highlight.js CSS (choose your theme, e.g. vs2015, atom-one-dark, github-dark etc.) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
 
-<!-- App Script -->
-<script defer src="script.js"></script>
+<!-- Highlight.js core -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
 </head>
 <body>
   <noscript>TreeTinker requires JavaScript enabled to work properly.</noscript>  <header class="tt-header" role="banner" aria-label="Site header">
@@ -52,6 +62,7 @@
         <button id="formatBtn" class="btn"><i class="fa-solid fa-wand-magic-sparkles"></i> Format</button>
         <button id="minifyBtn" class="btn"><i class="fa-solid fa-compress"></i> Minify</button>
         <button id="validateBtn" class="btn"><i class="fa-solid fa-check"></i> Validate</button>
+        <button id="copyBtn" class="btn"><i class="fa-solid fa-copy"></i> Copy Pretty Json</button>
       </div>
     </section><section class="editor container" aria-label="JSON editor">
   <div class="editor-grid">
@@ -59,25 +70,40 @@
       <h3><i class="fa-solid fa-code"></i> Text View</h3>
       <textarea id="jsonInput" spellcheck="false" placeholder='{"hello":"world"}'></textarea>
     </div>
-    <div class="panel" aria-label="Tree view">
-      <h3><i class="fa-solid fa-diagram-project"></i> Tree View</h3>
-      <div id="treeView" class="tree-view" role="tree" aria-live="polite"></div>
-    </div>
+<div class="panel" aria-label="Tree view">
+  <h3><i class="fa-solid fa-diagram-project"></i> Tree View</h3>
+  <div id="treeView" class="tree-view" role="tree" aria-live="polite">
+    <pre><code class="language-json" id="treeCode"></code></pre>
   </div>
+</div>
+</div>
 </section>
 
-  </main>  <section id="about" class="container" aria-label="About TreeTinker">
-    <h3>About</h3>
-    <p><strong>TreeTinker</strong> is a lightweight JSON editor with both Tree and Text views, instant formatting, validation, and one-click download. Everything runs 100% in your browser.</p>
-  </section>  <footer id="footer" class="tt-footer" role="contentinfo">
+  </main>  
+<section id="about" class="container" aria-label="About TreeTinker">
+  <h2>🌳 TreeTinker</h2>
+  <p><strong>TreeTinker</strong> is a lightweight and powerful JSON editor designed for the web. With its clean tree-view interface, you can easily <strong>view, edit, and explore</strong> your JSON data without hassle. Whether you’re debugging APIs, formatting configs, or experimenting with structured data, TreeTinker makes it simple.</p>
+  
+  <h3>✨ Key Features</h3>
+  <ul>
+    <li><strong>Tree &amp; Text View</strong> – Switch between structured tree view and raw JSON text.</li>
+    <li><strong>Easy Editing</strong> – Add, remove, or update keys and values with a click.</li>
+    <li><strong>Instant Preview</strong> – See changes in real time as you tinker.</li>
+    <li><strong>Download &amp; Save</strong> – Export your updated JSON instantly for use in projects.</li>
+    <li><strong>Runs in the Browser</strong> – No installs, no fuss—just open and start tinkering.</li>
+  </ul>
+  
+  <p>👉 Perfect for developers, data enthusiasts, and anyone who works with JSON.</p>
+</section>
+<footer id="footer" class="tt-footer" role="contentinfo">
     <div class="container">
       <p>© <span id="year"></span> TreeTinker. Built for the web.</p>
       <div class="social">
-        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="#" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://github.com/cuber-dev" aria-label="GitHub"><i class="fa-brands fa-github"></i> Github</a>
       </div>
     </div>
-  </footer>  <!-- App Script -->  <script defer src="script.js"></script>  <script>
+  </footer> 
+  <!-- App Script -->  <script defer src="script.js"></script>  <script>
     // Small inline helper: set the current year
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('year');
